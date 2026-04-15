@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class=" head">
+             <h1>Formulaire de Voyage</h1>
+             <p>visitez votre destination de rêve!</p>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#info-personnel">Information Personnel</a></li>
+                <li><a href="#info-voyage">Information de Voyage</a></li>
+                <li><a href="#options-paiement">Options et Paiement</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <form action="traitement.php" method="post">
+
+                <!-- card1: info personnel-->
+                <div class="card" id="info-personnel">
+                    <div class="card-title">
+                        <h2><i class="fas fa-user"></i>informations Personnels</h2>
+                    </div>
+
+                    <!-- Nom et Prénom sur la même ligne -->
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prenom</label>
+                            <input type="text" name="prenom" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Numéro de téléphone avec indicatif -->  
+                    <div class="form-group" id="indTel">
+                            <div class="phone-row">
+                            <label>indicatif regional</label>
+                            <input type="text" name="indicatif" placeholder="+212" maxlength="5" required>
+                            </div>
+                            <div class="phone-row">
+                             <label>Numéro de téléphone</label>
+                            <input type="text" name="telephone" placeholder="xx-xx-xx-xx-xx" required>
+                            </div>  
+                    </div>
+
+                    <!-- email and age -->
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" name="age" required>
+                        </div>
+                    </div>
+                    <div class="row adresse">
+                        <label for="adresse">Adresse</label>
+                        <textarea name="adresse" id="adresse"></textarea>
+                    </div>
+                </div>   
+
+                <!-- Destination et Ville sur la même ligne -->
+                <div class="card" id="info-voyage">
+                    <div class="card-title">
+                            <h2><i class="fas fa-plane-departure"></i>informations du Voyage</h2>
+                        </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Destination</label>
+                            <select name="destination" id="destination">
+                                <option value="">-- Choisir une destination --</option>
+                                <option value="japon">JAPON</option>
+                                <option value="france">FRANCE</option>
+                                <option value="usa">USA</option>
+                                <option value="espagne">SPAIN</option>
+                                <option value="italie">ITALIE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ville</label>
+                            <select name="ville" id="ville" disabled>
+                             <option value="">-- D'abord choisir une destination --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Nombre de personnes</label>
+                            <input type="number" name="nb_personnes" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Durée du voyage</label>
+                            <input type="text" name="duree">
+                        </div>
+                    </div>
+                </div>
+          
+            <!-- CARD 3: Options et Paiement -->
+             <div class="card" id="options-paiement">
+                <div class="card-title">
+                    <h2><i class="fas fa-credit-card"></i>Options et Paiement</h2>
+                </div>
+                <div class="options-grid" id="options-paiment">
+                    <div class="option-section">
+                        <h3><i class="fas fa-shield-alt"></i>Options D'assurance</h3>
+                            <p id="ass_p"></p>
+                            <div class="check-item"><input type="checkbox" name="assurance[]" value="sans" id="ass_sans"><label for="ass_sans">Sans</label></div>
+                            <div class="check-item"><input type="checkbox" class="verif" name="assurance[]" value="medicale" id="ass_medical"><label for="ass_madical">Medicale</label></div>
+                            <div class="check-item"><input type="checkbox" class="verif" name="assurance[]" value="medrep" id="ass_medrep"><label for="ass_medrep">Medicale+Repatriement</label></div>
+                            <div class="check-item"><input type="checkbox" class="verif" name="assurance[]" value="vol" id="ass_vol"><label for="ass_vol">Vol</label></div>
+                            <div class="check-item"><input type="checkbox" name="assurance[]" value="tous" id="ass_tous"><label for="ass_tous">Tous Risques</label></div>
+                    </div>
+                    <div class="option-section">
+                        <h3><i class="fas fa-wallet"></i>Mode de Paiement</h3>
+                        <div>
+                            <div class="check-item"><input type="radio" name="paiement" value="mastercard" id="pay_mastercard" checked><label for="pay_mastercard">Master Card</label></div>
+                            <div class="check-item"><input type="radio" name="paiement" value="visa" id="pay_visa"><label for="pay_visa">Visa</label></div>
+                            <div class="check-item"><input type="radio" name="paiement" value="virement" id="pay_virement"><label for="pay_virement">Virement Electrique</label></div>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <label for="code_securite">Code</label>
+                        <input type="password" name="code_securite" id="code_securite" maxlength="6" placeholder="••••">
+                        <p id="code_p"></p>
+                    </div>
+                </div>
+             </div>
+
+            <!-- ===== 3 BOUTONS ===== -->
+             <div class="form-actions">
+                <button type="button" id="btn-info" class="btn btn-info">
+                    <i class="fas fa-info-circle"></i> Récapitulatif
+                </button>
+                <button type="reset" class="btn btn-reset">
+                    <i class="fas fa-redo"></i> Réinitialiser
+                </button>
+                <button type="submit" class="btn btn-submit">
+                    <i class="fas fa-paper-plane"></i> Valider le Voyage
+                </button>
+            </div>
+            </form>
+        </div>
+            <div id="info-panel" class="info-panel">
+                <div class="info-panel-header">
+                    <h3><i class="fas fa-clipboard-list"></i> Récapitulatif de votre choix</h3>
+                    <button type="button" class="close-info" id="close-info">&times;</button>
+                </div>
+                <div class="info-panel-content" id="info-content"></div>
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
